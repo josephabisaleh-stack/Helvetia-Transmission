@@ -3,28 +3,997 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helvetia Transmission</title>
+    <title>Helvetia Transmission | AI-Enabled Freight Forwarding Roll-Up</title>
+    <meta name="description" content="Search fund acquiring and transforming traditional freight forwarding businesses across Europe through AI automation and strategic consolidation.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --navy: #0a1628;
+            --navy-light: #1a2942;
+            --gold: #d4a574;
+            --cream: #f8f6f3;
+            --gray: #636e7b;
+            --white: #ffffff;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--navy);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .lang-btn.active {
+            color: var(--gold);
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 2px;
+        }
+        
+        .lang-btn:hover {
+            color: var(--navy);
+        }
+        
+        .lang-divider {
+            color: var(--gray);
+            opacity: 0.3;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(248, 246, 243, 0.98);
+            box-shadow: 0 2px 20px rgba(10, 22, 40, 0.08);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 3rem 4rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #e8e4df 100%);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(212, 165, 116, 0.08) 100%);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 165, 116, 0.15);
+            color: var(--navy);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--navy);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            max-width: 700px;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            border: 2px solid var(--navy);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            left: 0;
+        }
+        
+        .cta-button:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .about-card {
+            padding: 2.5rem;
+            background: var(--cream);
+            border-left: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateX(10px);
+            box-shadow: -10px 10px 30px rgba(10, 22, 40, 0.08);
+        }
+        
+        .about-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        
+        .about-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* Strategy Section */
+        .strategy {
+            background: var(--navy);
+            color: var(--white);
+        }
+        
+        .strategy .section-title {
+            color: var(--white);
+        }
+        
+        .strategy .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .strategy-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            position: relative;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .step:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .step h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .step p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--cream);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat {
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        /* Team Section */
+        .team {
+            background: var(--white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: var(--cream);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(10, 22, 40, 0.12);
+        }
+        
         .team-photo {
             width: 100%;
-            height: auto;
-            max-width: 400px; /* adjust max size as needed */
-            border-radius: 8px;
+            height: 350px;
+            background: linear-gradient(135deg, #e8e4df 0%, #d4d0cb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .team-info {
+            padding: 3rem;
+        }
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        
+        .team-role {
+            font-size: 0.95rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .team-member ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .team-member li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .team-member li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        .team-contact {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(10, 22, 40, 0.1);
+        }
+        
+        .team-contact a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .team-contact a:hover {
+            color: var(--gold);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .contact .section-title {
+            color: var(--white);
+        }
+        
+        .contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 auto 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            text-align: left;
+        }
+        
+        .contact-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-value {
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+        
+        .contact-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-value a:hover {
+            color: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy-light);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2rem 3rem;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Scroll Animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--navy);
+            cursor: pointer;
+        }
+        
+        /* Language content visibility */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        .lang-content.active.inline {
+            display: inline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-left {
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+            
+            .about-grid,
+            .strategy-steps,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                gap: 3rem;
+            }
+            
+            .contact-info {
+                gap: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Helvetia Transmission</h1>
-    <div class="team">
-        <h2>Our Team</h2>
-        <img src="team1.jpg" alt="Team Member 1" class="team-photo">
-        <img src="team2.jpg" alt="Team Member 2" class="team-photo">
-        <img src="team3.jpg" alt="Team Member 3" class="team-photo">
-    </div>
+    <header id="header">
+        <nav>
+            <div class="nav-left">
+                <a href="#" class="logo">Helvetia Transmission</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about" class="lang-content en active">About</a><a href="#about" class="lang-content fr">À propos</a></li>
+                    <li><a href="#strategy" class="lang-content en active">Strategy</a><a href="#strategy" class="lang-content fr">Stratégie</a></li>
+                    <li><a href="#team" class="lang-content en active">Team</a><a href="#team" class="lang-content fr">Équipe</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                </div>
+                <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge lang-content en active">Backed by Institutional Investors</div>
+            <div class="hero-badge lang-content fr">Soutenu par des Investisseurs Institutionnels</div>
+            
+            <h1 class="lang-content en active">Transforming Europe's Freight Forwarding Industry</h1>
+            <h1 class="lang-content fr">Transformer l'Industrie du Fret en Europe</h1>
+            
+            <p class="lang-content en active">A search fund dedicated to acquiring and modernizing traditional freight forwarding businesses through AI automation and strategic consolidation.</p>
+            <p class="lang-content fr">Un fonds de recherche dédié à l'acquisition et à la modernisation des entreprises traditionnelles de transit par l'automatisation IA et la consolidation stratégique.</p>
+            
+            <a href="#contact" class="cta-button lang-content en active">Get in Touch</a>
+            <a href="#contact" class="cta-button lang-content fr">Nous Contacter</a>
+        </div>
+    </section>
+
+    <section id="about" class="about fade-in-section">
+        <h2 class="section-title lang-content en active">Our Mission</h2>
+        <h2 class="section-title lang-content fr">Notre Mission</h2>
+        
+        <p class="section-subtitle lang-content en active">Building the next-generation freight logistics platform by systematically consolidating a fragmented €235 billion market.</p>
+        <p class="section-subtitle lang-content fr">Construire la plateforme logistique de nouvelle génération en consolidant systématiquement un marché fragmenté de 235 milliards d'euros.</p>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <h3 class="lang-content en active">Search Fund Approach</h3>
+                <h3 class="lang-content fr">Approche Search Fund</h3>
+                <p class="lang-content en active">We identify and acquire traditional freight forwarding businesses across Europe, focusing on companies with strong fundamentals but limited technology adoption.</p>
+                <p class="lang-content fr">Nous identifions et acquérons des entreprises traditionnelles de transit à travers l'Europe, en nous concentrant sur des sociétés aux fondamentaux solides mais avec une adoption technologique limitée.</p>
+            </div>
+            <div class="about-card">
+                <h3 class="lang-content en active">AI-Driven Transformation</h3>
+                <h3 class="lang-content fr">Transformation par l'IA</h3>
+                <p class="lang-content en active">We implement proprietary AI automation to streamline operations, reduce costs by 40%, and double EBITDA margins while maintaining personalized service.</p>
+                <p class="lang-content fr">Nous mettons en œuvre une automatisation IA propriétaire pour rationaliser les opérations, réduire les coûts de 40% et doubler les marges EBITDA tout en maintenant un service personnalisé.</p>
+            </div>
+            <div class="about-card">
+                <h3 class="lang-content en active">Strategic Roll-Up</h3>
+                <h3 class="lang-content fr">Consolidation Stratégique</h3>
+                <p class="lang-content en active">Through disciplined M&A execution and operational excellence, we're building a scalable, high-margin market leader in freight forwarding.</p>
+                <p class="lang-content fr">Grâce à une exécution M&A disciplinée et à l'excellence opérationnelle, nous construisons un leader de marché évolutif à marges élevées dans le transit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats fade-in-section">
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-number">€235B</div>
+                <div class="stat-label lang-content en active">Total Market Size</div>
+                <div class="stat-label lang-content fr">Taille Totale du Marché</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">75%</div>
+                <div class="stat-label lang-content en active">Market Held by Long-Tail</div>
+                <div class="stat-label lang-content fr">Marché Détenu par la Long Tail</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">2x</div>
+                <div class="stat-label lang-content en active">EBITDA Margin Improvement</div>
+                <div class="stat-label lang-content fr">Amélioration Marge EBITDA</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">40%</div>
+                <div class="stat-label lang-content en active">Cost Reduction Target</div>
+                <div class="stat-label lang-content fr">Objectif Réduction Coûts</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategy" class="strategy fade-in-section">
+        <h2 class="section-title lang-content en active">Our Strategy</h2>
+        <h2 class="section-title lang-content fr">Notre Stratégie</h2>
+        
+        <p class="section-subtitle lang-content en active">A three-pillar approach to value creation in every acquisition.</p>
+        <p class="section-subtitle lang-content fr">Une approche en trois piliers pour créer de la valeur à chaque acquisition.</p>
+        
+        <div class="strategy-steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3 class="lang-content en active">Acquire</h3>
+                <h3 class="lang-content fr">Acquérir</h3>
+                <p class="lang-content en active">Target profitable freight forwarders with EBITDA under €1M, focusing on niche markets with high margins. Structured deals with GM equity rollover ensure continuity.</p>
+                <p class="lang-content fr">Cibler des transitaires rentables avec un EBITDA inférieur à 1M€, en se concentrant sur des marchés de niche à marges élevées. Des transactions structurées avec rollover du DG assurent la continuité.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3 class="lang-content en active">Automate</h3>
+                <h3 class="lang-content fr">Automatiser</h3>
+                <p class="lang-content en active">Deploy AI-powered systems for quoting, operations, customs, and invoicing. Reduce operational costs while improving speed, accuracy, and customer experience.</p>
+                <p class="lang-content fr">Déployer des systèmes IA pour les devis, opérations, douane et facturation. Réduire les coûts opérationnels tout en améliorant la rapidité, la précision et l'expérience client.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3 class="lang-content en active">Scale</h3>
+                <h3 class="lang-content fr">Développer</h3>
+                <p class="lang-content en active">Leverage improved margins and operational efficiency to drive organic growth, optimize procurement, and execute additional acquisitions across Europe.</p>
+                <p class="lang-content fr">Exploiter les marges améliorées et l'efficacité opérationnelle pour stimuler la croissance organique, optimiser les achats et réaliser des acquisitions supplémentaires en Europe.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team fade-in-section">
+        <h2 class="section-title lang-content en active">The Team</h2>
+        <h2 class="section-title lang-content fr">L'Équipe</h2>
+        
+        <p class="section-subtitle lang-content en active">Experienced partners with proven track records in freight forwarding, M&A, and business scaling.</p>
+        <p class="section-subtitle lang-content fr">Partenaires expérimentés avec des antécédents éprouvés dans le transit, M&A et la croissance d'entreprise.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="Joseph Abisaleh_Website Picture.png" alt="Joseph Abisaleh">
+                </div>
+                <div class="team-info">
+                    <h3>Joseph Abisaleh</h3>
+                    <div class="team-role lang-content en active">Co-Founder & Operating Partner</div>
+                    <div class="team-role lang-content fr">Co-Fondateur & Partenaire Opérationnel</div>
+                    <ul>
+                        <li class="lang-content en active">6 years as General Manager of leading shipping company (€2M+ EBITDA)</li>
+                        <li class="lang-content fr">6 ans comme Directeur Général d'une société de shipping leader (2M€+ EBITDA)</li>
+                        
+                        <li class="lang-content en active">Completed 2 M&As and post-merger integrations in UK and GCC</li>
+                        <li class="lang-content fr">2 M&A et intégrations post-fusion réalisées au Royaume-Uni et GCC</li>
+                        
+                        <li class="lang-content en active">7 years in transportation and strategy consulting</li>
+                        <li class="lang-content fr">7 ans en conseil transport et stratégie</li>
+                        
+                        <li class="lang-content en active">Civil Engineer from Imperial College, UCL, and EPFL</li>
+                        <li class="lang-content fr">Ingénieur Civil d'Imperial College, UCL et EPFL</li>
+                    </ul>
+                    <div class="team-contact">
+                        <a href="mailto:joseph@helvetia-transmission.ch">joseph@helvetia-transmission.ch</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="Hadrien Hypolite_Website Picture.jpg" alt="Hadrien Hypolite">
+                </div>
+                <div class="team-info">
+                    <h3>Hadrien Hypolite</h3>
+                    <div class="team-role lang-content en active">Co-Founder & Legal Partner</div>
+                    <div class="team-role lang-content fr">Co-Fondateur & Partenaire Juridique</div>
+                    <ul>
+                        <li class="lang-content en active">12 years in real estate and business law</li>
+                        <li class="lang-content fr">12 ans en droit immobilier et des affaires</li>
+                        
+                        <li class="lang-content en active">Co-founded Paris notarial group: 25 employees, €4M revenue</li>
+                        <li class="lang-content fr">Co-fondateur groupe notarial Paris : 25 employés, 4M€ de CA</li>
+                        
+                        <li class="lang-content en active">Successfully launched 4 notary offices and executed exit</li>
+                        <li class="lang-content fr">Lancement de 4 offices notariaux et sortie réussie</li>
+                        
+                        <li class="lang-content en active">Notary from Lyon 3 University</li>
+                        <li class="lang-content fr">Notaire diplômé de l'Université Lyon 3</li>
+                    </ul>
+                    <div class="team-contact">
+                        <a href="mailto:hypolite.h@gmail.com">hypolite.h@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact fade-in-section">
+        <h2 class="section-title lang-content en active">Let's Connect</h2>
+        <h2 class="section-title lang-content fr">Contactez-Nous</h2>
+        
+        <p class="section-subtitle lang-content en active">Interested in learning more about our search fund or exploring partnership opportunities?</p>
+        <p class="section-subtitle lang-content fr">Intéressé à en savoir plus sur notre search fund ou explorer des opportunités de partenariat ?</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    <a href="mailto:joseph@helvetia-transmission.ch">joseph@helvetia-transmission.ch</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Website</div>
+                <div class="contact-value">
+                    <a href="https://www.helvetia-transmission.ch">helvetia-transmission.ch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Helvetia Transmission. <span class="lang-content en active">All rights reserved.</span><span class="lang-content fr">Tous droits réservés.</span></p>
+    </footer>
+
+    <script>
+        // Language switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+        
+        // Load saved language preference
+        const savedLang = localStorage.getItem('language') || 'en';
+        setLanguage(savedLang);
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.dataset.lang;
+                setLanguage(lang);
+                localStorage.setItem('language', lang);
+            });
+        });
+        
+        function setLanguage(lang) {
+            // Update button states
+            langButtons.forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Update content visibility
+            langContents.forEach(content => {
+                if (content.classList.contains(lang)) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>

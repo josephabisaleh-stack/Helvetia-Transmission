@@ -489,6 +489,9 @@ section {
 
 .team-info {
     padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Adjust this value as needed */
 }
 
 .team-member h3 {
@@ -528,7 +531,7 @@ section {
 }
 
 .team-contact {
-    margin-top: 1.5rem;
+    margin-top: auto; /* This pushes it to the bottom */
     padding-top: 1.5rem;
     border-top: 1px solid rgba(10, 22, 40, 0.1);
     display: flex;

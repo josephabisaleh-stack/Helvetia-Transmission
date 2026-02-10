@@ -440,6 +440,7 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 4rem;
     margin-top: 3rem;
+    align-items: stretch; /* Makes cards same height */
 }
 
 .team-member {
@@ -447,6 +448,8 @@ section {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .team-member::before {
@@ -466,7 +469,7 @@ section {
 
 .team-photo {
     width: 100%;
-    height: 250px;
+    height: 450px;
     background: linear-gradient(135deg, #e8e4df 0%, #d4d0cb 100%);
     display: flex;
     align-items: center;
@@ -481,6 +484,8 @@ section {
     object-fit: cover;
     object-position: center;
     transition: transform 0.4s ease;
+    image-rendering: -webkit-optimize-contrast; /* Better rendering on Safari */
+    image-rendering: crisp-edges; /* Better rendering on other browsers */
 }
 
 .team-member:hover .team-photo img {
@@ -491,7 +496,7 @@ section {
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    min-height: 400px; /* Adjust this value as needed */
+    flex: 1; /* Takes all available space */
 }
 
 .team-member h3 {
@@ -531,7 +536,7 @@ section {
 }
 
 .team-contact {
-    margin-top: auto; /* This pushes it to the bottom */
+    margin-top: auto; /* Pushes to bottom */
     padding-top: 1.5rem;
     border-top: 1px solid rgba(10, 22, 40, 0.1);
     display: flex;

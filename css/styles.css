@@ -250,6 +250,7 @@ h1 {
     animation: fadeInUp 1s ease-out 0.6s both;
     position: relative;
     overflow: hidden;
+    border-radius: 0px;
 }
 
 .cta-button::before {

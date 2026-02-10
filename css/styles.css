@@ -466,7 +466,7 @@ section {
 
 .team-photo {
     width: 100%;
-    height: 350px;
+    height: 250px;
     background: linear-gradient(135deg, #e8e4df 0%, #d4d0cb 100%);
     display: flex;
     align-items: center;
